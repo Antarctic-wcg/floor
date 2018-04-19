@@ -1,0 +1,192 @@
+div,ul,li,html,body{
+    padding: 0px;
+    margin: 0px;
+}
+
+html{font-size:10px}
+@media screen and (min-width:321px) and (max-width:375px){html{font-size:11px}}
+@media screen and (min-width:376px) and (max-width:414px){html{font-size:12px}}
+@media screen and (min-width:415px) and (max-width:639px){html{font-size:15px}}
+@media screen and (min-width:640px) and (max-width:719px){html{font-size:20px}}
+@media screen and (min-width:720px) and (max-width:749px){html{font-size:22.5px}}
+@media screen and (min-width:750px) and (max-width:799px){html{font-size:23.5px}}
+@media screen and (min-width:800px){html{font-size:24.5px}}
+
+
+html,body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* transform: scale(0.6,0.6) */
+}
+
+.content{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.main3{
+    width: 47.4315rem;
+    height: 25rem;
+    /* background: yellow; */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 999;
+}
+@media screen and (max-width:1160px){
+    .content .main3{
+        left: 0;
+        transform: translate(0,-50%);
+    }
+}
+.main3>div img{
+    width: 100%;
+    height: 100%;
+}
+
+.mu{
+    width: 26.808rem!important;
+    height: 22rem!important;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%) rotateZ(208deg) skewX(-35deg);
+    z-index: 999;
+    transform-origin: center center;
+    /* background: aqua; */
+}
+@media screen and (max-width:1160px){
+    .mu{
+        left: 0;
+        transform: translate(38%,-50%) rotateZ(208deg) skewX(-35deg);
+    }
+}
+.mu .mu1{
+    float: left;
+    /* background: red; */
+}
+.main3{
+    position: relative;
+}
+.oneg,.twog{
+    position: absolute;
+    z-index: 9999999;
+}
+.oneg{
+    /* transform: translate(28.4897rem,4.9795rem); */
+    position: absolute;
+    left: 28.4897rem;
+    top: 4.9795rem;
+    /* transform: translate(698px,122px); */
+    width: 9.4285rem!important;
+    height: 10.0408rem!important;
+    /* width: 231px!important;
+    height: 196px!important; */
+    z-index: 99999999;
+}
+.oneg .cube1{
+    width: 4.775rem;
+    height: 2.530rem;
+    transform: skew(62deg,-28deg) translate(0rem,1.254rem);
+    /* background: yellow; */
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.oneg .cube2{
+    width: 4.693rem;
+    height: 5.020rem;
+    transform: skew(0deg,28deg) translate(0rem,-1.265rem);
+    /* background: yellow; */
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.oneg .cube3{
+    width: 4.775rem;
+    height: 4.979rem;
+    transform: skew(0deg,-28deg) translate(0.040rem,-1.265rem);
+    /* background: yellow; */
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.twog{
+    width: 14.2040rem!important;
+    height: 12.4897rem!important;
+    /* transform: translate(4.7746rem,5.0204rem) rotateY(0deg); */
+    transform: rotateY(0deg);
+    /* transform: translate(4.7746rem,7.5204rem) rotateY(180deg); */
+    /* transform: translate(117px,184px) rotateY(180deg); */
+    position: absolute;
+    left: 4.7346rem;
+    top: 5.0204rem;
+}
+.twog .long1{
+    width: 9.5102rem;
+    height: 2.5714rem;
+    transform: skew(62deg,-28deg) translate(-3.5510rem,0.6530rem);
+    /* background: red; */
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.twog .long2{
+    width: 9.4693rem;
+    height: 4.9571rem;
+    transform: skew(0deg,-28deg) translate(0rem,-2.4489rem);
+    /* background: yellow; */
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.twog .long3{
+    width: 4.7346rem;
+    height: 4.8979rem;
+    transform: skew(0deg,28deg) translate(0rem,-1.2653rem);
+    /* background: yellow; */
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.twog .long4{
+    width: 2.326rem;
+    height: 2.081rem;
+    transform: skew(0deg,0deg) translate(4.285rem,-1.510rem);
+    /* background: yellow; */
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+}
+.twog .long4>img{
+    width: 100%;
+    height: 100%;
+}
+
+
+/* 按钮切换地板 */
+.btnfloor{
+    width: 2rem;
+    height: 1rem;
+    position: fixed;
+    top: 20%;
+    left: 10%;
+    z-index: 9999999;
+}
+.btnfloor ul{
+    border: 1px solid #A0A0A0;
+    display: none;
+}
+.btnfloor ul li{
+    list-style: none;
+    text-align: center;
+
+}
+.btnfloor ul li:hover{
+    background: #CCFFFF;
+}

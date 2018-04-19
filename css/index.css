@@ -1,0 +1,156 @@
+div,ul,li,html,body{
+    padding: 0px;
+    margin: 0px;
+}
+
+html{font-size:10px}
+@media screen and (min-width:321px) and (max-width:375px){html{font-size:11px}}
+@media screen and (min-width:376px) and (max-width:414px){html{font-size:12px}}
+@media screen and (min-width:415px) and (max-width:639px){html{font-size:15px}}
+@media screen and (min-width:640px) and (max-width:719px){html{font-size:20px}}
+@media screen and (min-width:720px) and (max-width:749px){html{font-size:22.5px}}
+@media screen and (min-width:750px) and (max-width:799px){html{font-size:23.5px}}
+@media screen and (min-width:800px){html{font-size:24.5px}}
+
+
+html,body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* transform: scale(0.6,0.6) */
+}
+
+.content{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.main,.main3{
+    width: 47.4315rem;
+    height: 25rem;
+    /* background: yellow; */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 999;
+}
+.content .main:nth-child(2){
+    z-index: 1;
+}
+@media screen and (max-width:1160px){
+    .content .main,.main3{
+        left: 0;
+        transform: translate(0,-50%);
+    }
+}
+
+.main>div img,.main3>div img{
+    width: 100%;
+    height: 100%;
+}
+
+.main>div{
+    float: left;
+    position: relative;
+    z-index: 1;
+}
+
+/* 地板小格 */
+.main .floor1{
+    position: relative;
+    left: 14.22945rem;
+    top: 12.505rem
+}
+.main .floor2{
+    position: relative;
+    left: 4.74315rem;
+    top: 2.5rem;
+}
+.main .floor3{
+    transform: translateX(0px)
+}
+.main .floor4{
+    position: relative;
+    left: -4.74315rem;
+    top: 2.5rem;
+}
+.main .floor5{
+    position: relative;
+    left: -14.22945rem;
+    top: 7.505rem;
+}
+.main .floor6{
+    position: relative;
+    left: 4.74315rem;
+    top: 2.5rem;
+}
+.main .floor10{
+    position: relative;
+    left: -4.74315rem;
+    top: 2.5rem;
+}
+.main .floor16{
+    position: relative;
+    left: 14.22945rem;
+    top: -7.5rem;
+}
+.main .floor20{
+    position: relative;
+    left: -4.74315rem;
+    top: -2.5rem;
+}
+.main .floor21{
+    position: relative;
+    left: 4.74315rem;
+    top: -7.5rem;
+}
+.main .floor22{
+    position: relative;
+    left: 4.74315rem;
+    top: -2.5rem;
+}
+.main .floor24{
+    position: relative;
+    left: -4.74315rem;
+    top: -2.5rem;
+}
+.main .floor25{
+    position: relative;
+    left: -14.22945rem;
+    top: -7.5rem;
+}
+
+.mu{
+    width: 5.5rem;
+    height: 4.3rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%) rotateZ(27deg) skewX(-35deg);
+    z-index: 999;
+}
+
+/* 按钮切换地板 */
+.btnfloor{
+    width: 2rem;
+    height: 1rem;
+    position: fixed;
+    top: 20%;
+    left: 10%;
+    position: relative;
+    z-index: 9999999;
+}
+.btnfloor ul{
+    border: 1px solid #A0A0A0;
+    display: none;
+}
+.btnfloor ul li{
+    list-style: none;
+    text-align: center;
+
+}
+.btnfloor ul li:hover{
+    background: #CCFFFF;
+}

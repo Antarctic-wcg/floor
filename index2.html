@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="./index.css">
+    <title>floor</title>
+    <script>
+        $(function(){
+            $(".main>div").css({"width":47.4315/5+"rem","height":25/5+"rem"});
+            $(".mu .mu1").css({"width":26.808/5+"rem","height":22/5+"rem"});
+
+            $(".main,.btnfloor").click(function(){
+                $(".btnfloor ul").css("display",function(index,value){
+                    return value == "none" ? "block":"none";
+                })
+            })
+
+            var color;
+            $(".btnfloor ul li").click(function(index){
+                if($(this).text() == "B"){
+                    if(color !== undefined){
+                        console.log($(".floor"+color+" img").attr("src","./img/绿格.png"))
+                    }
+                }else{
+                    if(color !== undefined){
+                        console.log($(".floor"+color+" img").attr("src","./img/红格.png"))
+                    }
+                }
+            })
+
+            for(var i = 0; i < $(".mu").children().length; i++){
+                // console.log($(".mu").children()[i]);
+                (function(i){
+                    $(".mu .mu1").eq(i).click(function(){
+                        color = $(this).attr("id");
+                        $(".btnfloor ul").css("display","block");
+                    })
+                })(i)
+            }
+
+
+        })
+    </script>
+    <style>
+        .mu{
+            width: 26.808rem;
+            height: 22rem;
+        }
+        .mu .mu1{
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+            <div class="main">
+                <div class="floor1">
+                    <img src="./img/绿格.png" alt="">
+                </div>
+                <div class="floor2">
+                    <img src="./img/绿格.png" alt="">
+                </div>
+                <div class="floor3">
+                    <img src="./img/红格.png" alt="">
+                </div>
+                <div class="floor4">
+                    <img src="./img/绿格.png" alt="">
+                </div>
+                <div class="floor5">
+                    <img src="./img/绿格.png" alt="">
+                </div>
+                <div class="floor6">
+                    <img src="./img/绿格.png" alt="">
+                </div>
+                <div class="floor7">
+                    <img src="./img/红格.png" alt="">
+                </div>
+                <div class="floor8">
+                    <img src="./img/红格.png" alt="">
+                </div>
+                <div class="floor9">
+                    <img src="./img/红格.png" alt="">
+                </div>
+                <div class="floor10">
+                    <img src="./img/绿格.png" alt="">
+                </div>
+                <div class="floor11">
+                    <img src="./img/红格.png" alt="">
+                </div>
+                <div class="floor12">
+                    <img src="./img/红格.png" alt="">
+                </div>
+                <div class="floor13">
+                    <img src="./img/红格.png" alt="">
+                </div>
+                <div class="floor14">
+                    <img src="./img/红格.png" alt="">
+                </div>
+                <div class="floor15">
+                    <img src="./img/红格.png" alt="">
+                </div>
+                <div class="floor16">
+                    <img src="./img/绿格.png" alt="">
+                </div>
+                <div class="floor17">
+                    <img src="./img/红格.png" alt="">
+                </div>
+                <div class="floor18">
+                    <img src="./img/红格.png" alt="">
+                </div>
+                <div class="floor19">
+                    <img src="./img/红格.png" alt="">
+                </div>
+                <div class="floor20">
+                    <img src="./img/绿格.png" alt="">
+                </div>
+                <div class="floor21">
+                    <img src="./img/绿格.png" alt="">
+                </div>
+                <div class="floor22">
+                    <img src="./img/绿格.png" alt="">
+                </div>
+                <div class="floor23">
+                    <img src="./img/红格.png" alt="">
+                </div>
+                <div class="floor24">
+                    <img src="./img/绿格.png" alt="">
+                </div>
+                <div class="floor25">
+                    <img src="./img/绿格.png" alt="">
+                </div>
+            </div>
+
+            <div class="mu">
+                <div class="mu1" id="3"></div>
+                <div class="mu1" id="4"></div>
+                <div class="mu1" id="9"></div>
+                <div class="mu1" id="10"></div>
+                <div class="mu1" id="15"></div>
+
+                <div class="mu1" id="2"></div>
+                <div class="mu1" id="8"></div>
+                <div class="mu1" id="5"></div>
+                <div class="mu1" id="14"></div>
+                <div class="mu1" id="20"></div>
+
+                <div class="mu1" id="7"></div>
+                <div class="mu1" id="16"></div>
+                <div class="mu1" id="13"></div>
+                <div class="mu1" id="25"></div>
+                <div class="mu1" id="19"></div>
+
+                <div class="mu1" id="6"></div>
+                <div class="mu1" id="12"></div>
+                <div class="mu1" id="1"></div>
+                <div class="mu1" id="18"></div>
+                <div class="mu1" id="24"></div>
+
+                <div class="mu1" id="11"></div>
+                <div class="mu1" id="21"></div>
+                <div class="mu1" id="17"></div>
+                <div class="mu1" id="22"></div>
+                <div class="mu1" id="23"></div>
+            </div>
+
+            <div class="btnfloor">
+                <span>切换</span>
+                <img src="./img/红格.png" width="100%" height="100%" alt="">
+                <ul>
+                    <li>A</li>
+                    <li>B</li>
+                </ul>
+            </div>
+    </div>
+</body>
+</html>
