@@ -11,22 +11,6 @@ $(function(){
     })
 
 
-    //列表点击切换
-    var color;
-    $(".btnfloor ul li").click(function(index){
-        console.log(color,"------")
-        if($(this).text() == "绿"){
-            if(color !== undefined){
-                $(".floor1:nth-child("+(color+3)+") img").attr("src","./img/绿格.png")
-            }
-        }else{
-            if(color !== undefined){
-                $(".floor1:nth-child("+(color+3)+") img").attr("src","./img/红格.png")
-            }
-        }
-    })
-    //列表点击切换end---------------
-
     //循环输出地板
     var x = 9.4863;
     var y = 5;
@@ -79,13 +63,194 @@ $(function(){
 
     $(".floor1:odd img").attr("src","./img/红格.png");
 
-    
+    //列表点击切换
+    var color;
+    $(".btnfloor ul li").click(function(index){
+        console.log(color,"------")
+        if($(this).text() == "绿"){
+            if(color !== undefined){
+                $(".floor1:eq("+(color-1)+") img").attr("src","./img/绿格.png")
+            }
+        }else{
+            if(color !== undefined){
+                $(".floor1:eq("+(color-1)+") img").attr("src","./img/红格.png")
+            }
+        }
+    })
+    //列表点击切换end---------------
+
+    //固定格子
+    function drag(e){
+        var who = $(this).parent().attr("id");
+        // console.log(who);
+        if(who == "two"){
+            lastLeft = cftLeftend ? cftLeftend:cftLeft;
+            lastTop = cftTopend ? cftTopend:cftTop;
+            // console.log(lastLeft,lastTop)
+            cftLeftend = $("#two").position().left;
+            cftTopend = $("#two").position().top;
+
+            if(status == "shu"){
+                
+            //    第一种笨方法固定格子
+                // if(cftLeftend >= 0 && cftLeftend < main3Width/2){// (1/2)
+                //     if(cftTopend >= (-main3Height) && cftTopend <0){
+                //         console.log("1-1");
+                //         $("#two").css({
+                //             "left" : main3Width/fontSize+"rem",
+                //             "top" : "0rem"
+                //         })
+                //     }else if(cftTopend >= 0 && cftTopend < 2*main3Height){
+                //         console.log("1-2");
+                //         $("#two").css({
+                //             "left" : "0rem",
+                //             "top" : main3Height/fontSize+"rem"
+                //         })
+                //     }else if(cftTopend >= 2*main3Height && cftTopend < 4*main3Height){
+                //         console.log("1-3");
+                //         $("#two").css({
+                //             "left" : main3Width/fontSize+"rem",
+                //             "top" : 2*main3Height/fontSize+"rem"
+                //         })
+                //     }else if(cftTopend >= 4*main3Height){
+                //         console.log("1-4");
+                //         $("#two").css({
+                //             "left" : 2*main3Width/fontSize+"rem",
+                //             "top" : 3*main3Height/fontSize+"rem"
+                //         })
+                //     }
+                // }else if(cftLeftend >= main3Width/2 && cftLeftend < main3Width){// (1)
+                //     if(cftTopend >= (-1.5*main3Height) && cftTopend < (-main3Height)){
+                //         console.log("2-1");
+                //         $("#two").css({
+                //             "left" : main3Width/fontSize+"rem",
+                //             "top" : "0rem"
+                //         })
+                //     }else if(cftTopend >= (-main3Height) && cftTopend < main3Height){
+                //         console.log("2-2");
+                //         $("#two").css({
+                //             "left" : main3Width/fontSize+"rem",
+                //             "top" : "0rem"
+                //         })
+                //     }else if(cftTopend >= main3Height && cftTopend < (main3Height*3)){
+                //         console.log("2-3");
+                //         $("#two").css({
+                //             "left" : main3Width/fontSize+"rem",
+                //             "top" : 2*main3Height/fontSize+"rem"
+                //         })
+                //     }else if(cftTopend >= (main3Height*3)){
+                //         console.log("2-4");
+                //         $("#two").css({
+                //             "left" : 2*main3Width/fontSize+"rem",
+                //             "top" : 3*main3Height/fontSize+"rem"
+                //         })
+                //     }
+                // }else if(cftLeftend >= main3Width && cftLeftend < (1.5*main3Width)){// 1.5
+                //     if(cftTopend >= (-2*main3Height) && cftTopend < (-1.5*main3Height)){
+                //         console.log("3-1");
+                //         $("#two").css({
+                //             "left" : 2*main3Width/fontSize+"rem",
+                //             "top" : (-1*main3Height)/fontSize+"rem"
+                //         })
+                //     }else if(cftTopend >= (-1.5*main3Height) && cftTopend < (-1*main3Height)){
+                //         console.log("3-2");
+                //         $("#two").css({
+                //             "left" : 2*main3Width/fontSize+"rem",
+                //             "top" : (-1*main3Height)/fontSize+"rem"
+                //         })
+                //     }else if(cftTopend >= (-1*main3Height) && cftTopend < (0.5*main3Height)){
+                //         console.log("3-3");
+                //         $("#two").css({
+                //             "left" : main3Width/fontSize+"rem",
+                //             "top" : "0rem"
+                //         })
+                //     }else if(cftTopend >= (0.5*main3Height) && cftTopend < main3Height){
+                //         console.log("3-4");
+                //         $("#two").css({
+                //             "left" : 2*main3Width/fontSize+"rem",
+                //             "top" : main3Height/fontSize+"rem"
+                //         })
+                //     }else if(cftTopend >= main3Height && cftTopend < (1.5*main3Height)){
+                //         console.log("3-5");
+                //         $("#two").css({
+                //             "left" : 2*main3Width/fontSize+"rem",
+                //             "top" : main3Height/fontSize+"rem"
+                //         })
+                //     }else if(cftTopend >= (1.5*main3Height) && cftTopend <(2.5*main3Height)){
+                //         console.log("3-6");
+                //         $("#two").css({
+                //             "left" : main3Width/fontSize+"rem",
+                //             "top" : 2*main3Height/fontSize+"rem"
+                //         })
+                //     }else if(cftTopend >= (2.5*main3Height) && cftTopend < (4.5*main3Height)){
+                //         console.log("3-7");
+                //         $("#two").css({
+                //             "left" : 2*main3Width/fontSize+"rem",
+                //             "top" : 3*main3Height/fontSize+"rem"
+                //         })
+                //     }else if(cftTopend > (4.5*main3Height)){
+                //         $("#two").css({
+                //             "left" : 3*main3Width/fontSize+"rem",
+                //             "top" : 4*main3Height/fontSize+"rem"
+                //         })
+                //     }
+                // }else if(cftLeftend >= (1.5*main3Width) && cftLeftend < (2*main3Width)){// 2
+                //     if(cftTopend >= (-2*main3Height) && cftTopend < 0){
+                //         console.log("4-1");
+                //         $("#two").css({
+                //             "left" : 2*main3Width/fontSize+"rem",
+                //             "top" : -1*main3Height/fontSize+"rem"
+                //         })
+                //     }else if(cftTopend >= 0 && cftTopend < (2*main3Height)){
+                //         console.log("4-2");
+                //         $("#two").css({
+                //             "left" : 2*main3Width/fontSize+"rem",
+                //             "top" : main3Height/fontSize+"rem"
+                //         })
+                //     }else if(cftTopend >= (2*main3Height) && cftTopend < (4*main3Height)){
+                //         console.log("4-3");
+                //         $("#two").css({
+                //             "left" : 2*main3Width/fontSize+"rem",
+                //             "top" : 3*main3Height/fontSize+"rem"
+                //         })
+                //     }else if(cftTopend >= (4*main3Height)){
+                //         console.log("4-4");
+                //         $("#two").css({
+                //             "left" : 3*main3Width/fontSize+"rem",
+                //             "top" : 4*main3Height/fontSize+"rem"
+                //         })
+                //     }
+                // }else if(cftLeftend >= (2*main3Width) && cftLeftend < (2.5*main3Width)){//2.5
+                //     if(cftTopend >= (-2*main3Height) && cftTopend < 0){
+                //         console.log("5-1");
+                //         $("#two").css({
+                //             "left" : 2*main3Width/fontSize+"rem",
+                //             "top" : -1*main3Height/fontSize+"rem"
+                //         })
+                //     }else if(cftTopend >= 0 && cftTopend < 2*main3Height){
+                //         console.log("5-2");
+                //         $("#two").css({
+                //             "left" : 2*main3Width/fontSize+"rem",
+                //             "top" : main3Height/fontSize+"rem"
+                //         })
+                //     }
+                // }
+            }else if(status == "heng"){
+                
+            }
+        }else if(who == "one"){
+
+        }
+
+    }
+    //固定格子end-------------------------
 
     //长方体拖动start
-    var _x_start,_y_start,_x_move,_y_move,_x_end,_y_end,left_start,top_start,cftLeftend,cftTopend;
+    var _x_start,_y_start,_x_move,_y_move,_x_end,_y_end,left_start,top_start,cftLeftend,cftTopend,lastLeft,lastTop;
     var fontSize = parseFloat($("body").css("font-size"));//当前bodyfontsize
-    var main3Height = parseFloat($(".main3").css("height"))/10;
     var main3Width = parseFloat($(".main3").css("width"))/10;
+    var main3Height = parseFloat($(".main3").css("height"))/10;
+    // console.log(main3Height/main3Width);
     var cftLeft = $("#two").position().left;//初始长方体距离父元素左边距离
     var cftTop = $("#two").position().top;//初始长方体距离父元素上边距离
     // var zft = parseFloat($("#one").css("left"));//层级
@@ -110,15 +275,24 @@ $(function(){
     var addj = "add";
     var status = "shu";
     var item = "ping";
+    var once = 1;//多次旋转长方体，控制好边缘
+    var c = 1;
+    var first = true;
     $(".long4").click(function(e){
         e.cancelBubble = true;
         e.stopPropagation();
         degree += 180;
         $(".long4").css("display","none");
 
-        
+        if(c > 1){
+            first ? once += 1 : once -=1;
+            first = !first;
+        }
+        c = 2;
+
+        //处理边边旋转情况1、右边’
         for(var k = 4; k < 8; k++){
-            if(cftLeftend >= (k*main3Width) && cftLeftend <= ((k+1)*main3Width) && cftTopend >= ((-k+9)*main3Height) &&  cftTopend <= ((-k+10)*main3Height)){
+            if(cftLeftend >= (k*main3Width-1) && cftLeftend <= ((k+1)*main3Width) && cftTopend >= ((-k+9)*main3Height) &&  cftTopend <= ((-k+10)*main3Height)){
                 console.log(1)
                 
                 $(".twog").css("transform","rotateY("+degree+"deg) translateY("+(0)+"rem) translateX("+(main3Width/fontSize)+"rem)");
@@ -127,9 +301,9 @@ $(function(){
                 console.log(status);
                 item = "ping";
                 break;
-            }else if(cftLeftend >= (k*main3Width) && cftLeftend <= ((k+1)*main3Width) && cftTopend >= ((k-6)*main3Height) && cftTopend <= ((k-5)*main3Height)){
+            }else if(cftLeftend >= (k*main3Width-1) && cftLeftend <= ((k+1)*main3Width) && cftTopend >= ((k-6)*main3Height) && cftTopend <= ((k-5)*main3Height)){
                 console.log("22--------------");
-                console.log(cftLeftend,cftTopend);
+                // console.log(cftLeftend,cftTopend);
                 $(".twog").css("transform","rotateY("+degree+"deg) translateY("+(main3Height/fontSize)+"rem) translateX("+(-main3Width/fontSize)+"rem)");
                 addj = "add";
                 status = "heng";
@@ -143,6 +317,7 @@ $(function(){
             }else{
                 console.log(3);
                 item = "you";
+                status = "heng";
             }
         }
         if(item == "you"){
@@ -150,23 +325,13 @@ $(function(){
                 $(".twog").css("transform","rotateY("+degree+"deg) translateY("+(main3Height/fontSize)+"rem)");
                 addj = "jian";
                 status = "heng";
-                console.log(status);
+                // console.log(status);
             }else if(addj == "jian"){
                 $(".twog").css("transform","rotateY("+degree+"deg) translateY("+(0)+"rem)");
                 addj = "add";
             }
         }
             
-        
-
-        // if(addj == "add"){
-        //     $(".twog").css("transform","rotateY("+degree+"deg) translateY("+(main3Height/fontSize)+"rem)");
-        //     addj = "jian";
-        // }else if(addj == "jian"){
-            
-        //     $(".twog").css("transform","rotateY("+degree+"deg) translateY("+(0)+"rem)");
-        //     addj = "add";
-        // }
     })
 
     $(".lg").on("touchstart",function(e){
@@ -194,37 +359,69 @@ $(function(){
         var dongY = (parseFloat(_y_move)-parseFloat(_y_start)+parseFloat(top_start))/fontSize;
         // console.log(dongX);
 
-        $("#two").css("left",dongX+"rem");
-        $("#two").css("top",dongY+"rem");
+        
+        
+        if(status == "shu"){
+            if(dongX < 0){
+                $("#two").css("left","0rem");
+            }else if(dongX > (main3Width/fontSize*7)){
+                $("#two").css("left",(main3Width/fontSize*7)+"rem");
+            }else{
+                $("#two").css("left",dongX+"rem");
+            }
+            if(dongY < (-2*main3Height/fontSize)){
+                $("#two").css("top",(-2*main3Height/fontSize)+"rem");
+            }else if(dongY > (5*main3Height/fontSize)){
+                $("#two").css("top",(5*main3Height/fontSize)+"rem");
+            }else{
+                $("#two").css("top",dongY+"rem");
+            }
+        }else if(status == "heng"){
+            if(once == 1){
+                if(dongX < 0){
+                    $("#two").css("left","0rem");
+                }else if(dongX > (main3Width/fontSize*7)){
+                    $("#two").css("left",(main3Width/fontSize*7)+"rem");
+                }else{
+                    $("#two").css("left",dongX+"rem");
+                }
+                if(dongY < (-3*main3Height/fontSize)){
+                    $("#two").css("top",(-3*main3Height/fontSize)+"rem");
+                }else if(dongY > (4*main3Height/fontSize)){
+                    $("#two").css("top",(4*main3Height/fontSize)+"rem");
+                }else{
+                    $("#two").css("top",dongY+"rem");
+                }
+            }else{
+                if(dongX < 0){
+                    $("#two").css("left","0rem");
+                }else if(dongX > (main3Width/fontSize*7)){
+                    $("#two").css("left",(main3Width/fontSize*7)+"rem");
+                }else{
+                    $("#two").css("left",dongX+"rem");
+                }
+                if(dongY < (-2*main3Height/fontSize)){
+                    $("#two").css("top",(-2*main3Height/fontSize)+"rem");
+                }else if(dongY > (5*main3Height/fontSize)){
+                    $("#two").css("top",(5*main3Height/fontSize)+"rem");
+                }else{
+                    $("#two").css("top",dongY+"rem");
+                }
+            }
+        }
+        // $("#two").css("top",dongY+"rem");
+        
+
+        // console.log(parseFloat($("#two").css("left")));
 
     });
-    $(".lg").on("touchend",function(e){
-        // cft = parseFloat($("#two").css("left"));
-        // console.log(e.changedTouches[0].pageX,e.changedTouches[0].pageY);
-        cftLeftend = $("#two").position().left;
-        cftTopend = $("#two").position().top;
-
-        // console.log(cftLeftend > -main3Width,cftLeftend < (main3Width/2));
-        //固定位置***********************
-        // if(cftLeftend > -main3Width && cftLeftend < (main3Width/2) && cftTopend > 0 && cftTopend < (main3Height*2)){
-        //     console.log(1);
-        //     $("#two").css("left","0rem");
-        //     $("#two").css("top",(main3Height/fontSize)+"rem");
-        // }else if(cftLeftend > (main3Width/2) && cftLeftend < (2*main3Width-main3Width/2)){
-        //     console.log(2);
-        //     if(cftTopend > -2*main3Height && cftTopend < -main3Height){
-        //         console.log("2-1");
-        //         $("#two").css("left",(2*main3Width)/fontSize+"rem");
-        //         $("#two").css("top",(-main3Height/fontSize)+"rem");
-        //     }else if(cftTopend > -main3Height && cftTopend < 0){
-        //         console.log("2-2");
-        //         $("#two").css("left",(main3Width)/fontSize+"rem");
-        //         $("#two").css("top","0rem");
-        //     }
-        // }
-
-    });
+    
+    $(".lg").on("touchend",drag);
     //长方体拖动end----------------
+
+    //地板中心点
+    // console.log($(".yuan:eq(4)").position().left,main3Width);
+    //地板中心点end
 
     //正方体拖动start
     var _x_start2,_y_start2,_x_move2,_y_move2,_x_end2,_y_end2,left_start2,top_start2;
@@ -259,11 +456,8 @@ $(function(){
         $("#one").css("top",dongY2+"rem");
 
     });
-    $(".cube").on("touchend",function(e){
-        // zft = parseFloat($("#one").css("left"));
-        // console.log(zft);
-        
-    });
+    $(".cube").on("touchend",drag);
+
     //正方体拖动end------------------
 
     //长方体拖动松手后到固定格子start
