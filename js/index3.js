@@ -91,7 +91,16 @@ $(function(){
             cftTopend = $("#two").position().top;
 
             if(status == "shu"){
-                
+                for(var i = 0; i < 5; i++){
+                    if(cftLeftend>=(i*main3Width) && cftLeftend<((i+1)*main3Width)){
+                        if(cftTopend>=(-1*main3Height) && cftTopend<0){
+                            $("#two").css({
+                                "left" : (i+1)*main3Width/fontSize+"rem",
+                                "top" : 0
+                            })
+                        }
+                    }
+                }
             //    第一种笨方法固定格子
                 // if(cftLeftend >= 0 && cftLeftend < main3Width/2){// (1/2)
                 //     if(cftTopend >= (-main3Height) && cftTopend <0){
@@ -460,10 +469,60 @@ $(function(){
 
     //正方体拖动end------------------
 
-    //长方体拖动松手后到固定格子start
-    // console.log($("#1").position().top)
-    //长方体拖动松手后到固定格子end
+    //小人入场
+    $(".person").css({
+        "width" : main3Width,
+        "height" : 2*main3Height,
+        "left" : main3Width/2,
+        "top" : main3Height*7
+    })
     
+    var personRun = 4.75;
+    var runLeft = main3Width/2;
+    var runTop = main3Height*7;
+    function run(){
+        $(".person").css({
+            "background-position" : -personRun+"rem 0rem",
+            "left" : runLeft/fontSize+"rem",
+            "top" : runTop/fontSize+"rem"
+        });
+        personRun = personRun + 4.75;
+        runLeft += 4.8;
+        runTop -= 2;
+        if(runLeft >= (2.5*main3Width)){
+            runLeft = 2.5*main3Width;
+        }
+        if(runTop <= (5.5*main3Height)){
+            runTop = 5.5*main3Height;
+        }
+        if(personRun == 76){
+            personRun = 4.75;
+        }
+        if(runLeft == 2.5*main3Width && runTop == 5.5*main3Height){
+            clearTimeout(run1);
+            ranDom();
+        }else{
+            setTimeout(run,150);
+        }
+        
+    }
+
+    var run1 = setTimeout(run,0);
+
+    function ranDom(){
+        var direct = Math.floor(Math.random() * 4 + 0);
+        if(direct == 0){
+            console.log(direct);
+        }else if(direct ==1){
+            console.log(direct);
+        }else if(direct == 2){
+            console.log(direct);
+        }else if(direct == 3){
+            console.log(direct);
+        }
+    }
+
     
+
 
 })

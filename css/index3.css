@@ -210,3 +210,28 @@ html,body{
     left: 50%;
     transform: translate(-50%,-50%);
 }
+
+.rukou{
+    position: absolute;
+    width: 4.6rem!important;
+    height: 4.1rem!important;
+    left: 5.5rem;
+    top: 18.8rem;
+    /* z-index: 9999999999999; */
+    background: #CCCCCC;
+    transform: skew(-63deg,28deg);
+    text-align: center;
+    line-height: 4.1rem
+}
+
+.person{
+    background-image: url("../img/NewImage1.png");
+    /* background-color: #CCFF66; */
+    background-size: auto 4.74rem;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    position: absolute;
+    /* left: 2.9rem;
+    top: 13.6rem; */
+    z-index: 9999;
+}
